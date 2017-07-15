@@ -1,7 +1,7 @@
 class CatsController < ApplicationController
   before_action :set_cat, only: [:show, :edit, :update, :destroy]
   before_action :require_logged_in
-  
+
   # GET /cats
   # GET /cats.json
   def index
@@ -66,7 +66,8 @@ class CatsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cat
-      @cat = Cat.find(params[:id])
+      # @cat = Cat.find(params[:id])
+      @cat = current_user.cats.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
